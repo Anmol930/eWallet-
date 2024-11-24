@@ -1,0 +1,47 @@
+<%- include('partial/header') %>
+      <div class="container-fluid">
+        <div class="row">
+            <%- include('partial/sidebar') %>
+            <div class="col-lg-9">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3>Transaction History</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Phone</th>
+                                    <th>Details</th>
+                                    <th>Amount</th>
+                                    <th>Wallet</th>
+                                    <th>CreatedAt</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(var x=0;x< data4.length;x++){ %>
+                                <tr>
+                                    <td scope="row"><%= data4[x].phone %></td>
+                                    <td><%= data4[x].details %></td>
+                                    <td>
+                                        <% if(data4[x].type=="Cr"){ %>
+                                        <span class="text-success">+<%= data4[x].amount %></span>
+                                        <% } else {%>
+                                            <span class="text-danger">-<%= data4[x].amount %></span>
+                                        <% }%>
+                                    </td>
+                                    <td><%= data4[x].wallet %></td>
+                                    <td><%= data4[x].createdAt %></td>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+      
+      <%- include('partial/footer') %>
